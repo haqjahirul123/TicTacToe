@@ -1,4 +1,5 @@
 let sign="X"
+let button= document.getElementById('resetBtn')
 
 function fill(number){
     let box=document.getElementById("div"+number)
@@ -14,25 +15,12 @@ function fill(number){
         document.getElementById('result').innerHTML="Congrats!! YOU ARE WINNER"
       
     }
-  
     else{
         if(draw()){
             document.getElementById('result').innerHTML="It's DRAW. Try one more?"
         }
     }
 }
-
-// function viewResult(){
-//     if(winner()){
-//         alert(" win")
-//     }
-//     else{
-//         alert("not win")
-//     }
-
-// }
-// console.log(viewResult())
-
 
 function checkPlayer(){
     if(sign=="X"){
@@ -93,3 +81,8 @@ function draw(){
     return true
 }
 
+function reset(){
+    for(i=1;i<=9;i++){
+        document.getElementById('div'+i).innerText=""
+    }
+}
