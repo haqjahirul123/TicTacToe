@@ -69,3 +69,16 @@ button{
 .div:nth-child(9){
     border-right: none;
 }
+
+.playerTurn{
+    text-align: center;
+    color: #fffc00 ;
+    font-size: 2rem;
+}
+
+.result{
+    color: #fffc00 ;  /* fallback for old browsers */
+color: -webkit-linear-gradient(to bottom,  #00F260);  /* Chrome 10-25, Safari 5.1-6 */
+ linear-gradient(to bottom, #0575E6, #00F260); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}

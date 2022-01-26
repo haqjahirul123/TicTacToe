@@ -1,5 +1,6 @@
 let sign="X"
 let button= document.getElementById('resetBtn')
+let playerTurn= document.getElementById('playerTurn')
 
 function fill(number){
     let box=document.getElementById("div"+number)
@@ -8,6 +9,7 @@ function fill(number){
     if(box.innerText==""){
         box.innerHTML=sign
         checkPlayer()
+        playerTurn.innerHTML="Now "+sign+" 's Turn"
     }
 
    
