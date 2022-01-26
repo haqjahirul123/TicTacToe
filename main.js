@@ -12,15 +12,14 @@ function fill(number){
    
     if(winner()){
         document.getElementById('result').innerHTML="Congrats!! YOU ARE WINNER"
-        console.log(winner())
-        
+      
     }
   
-    // else{
-    //     if(draw()){
-    //         alert("match draw")
-    //     }
-    // }
+    else{
+        if(draw()){
+            document.getElementById('result').innerHTML="It's DRAW. Try one more?"
+        }
+    }
 }
 
 // function viewResult(){
@@ -76,23 +75,21 @@ function checkCondiion(a,b,c){
     {
         return true
     }
-    // else{
-    //     return false
-    // }
+  
     
 
 }
 
-// function draw(){
-//     if (getData("div1")!=""
-//     && getData("div2")!=""
-//     && getData("div3")!=""
-//     && getData("div4")!=""
-//     && getData("div5")!=""
-//     && getData("div6")!=""
-//     && getData("div7")!=""
-//     && getData("div8")!=""
-//     )
-//     return true
-// }
+function draw(){
+    if (getData("div1")!=""
+    && getData("div2")!=""
+    && getData("div3")!=""
+    && getData("div4")!=""
+    && getData("div5")!=""
+    && getData("div6")!=""
+    && getData("div7")!=""
+    && getData("div8")!=""
+    )
+    return true
+}
 
