@@ -1,6 +1,19 @@
-let sign="X"
+let sign="Jahir"
 let button= document.getElementById('resetBtn')
 let playerTurn= document.getElementById('playerTurn')
+
+function playerInput(val){
+    console.log(val)
+     sign2=val
+    console.log(sign2)
+   
+    //var sign2= document.getElementById("select").value;
+    document.getElementById("demo").innerText = "You selected: " + sign2;
+        //alert("The input value has changed. The new value is: " + val);
+      
+}
+
+console.log(playerInput())
 
 function fill(number){
     let box=document.getElementById("div"+number)
@@ -25,11 +38,11 @@ function fill(number){
 }
 
 function checkPlayer(){
-    if(sign=="X"){
-        sign="O"
+    if(sign=="Jahirul"){
+        sign=sign2
     }
     else{
-        sign="X"
+        sign="Jahirul"
     }
 }
 
@@ -87,4 +100,7 @@ function reset(){
     for(i=1;i<=9;i++){
         document.getElementById('div'+i).innerText=""
     }
+    document.getElementById('result').innerText=""
+    document.getElementById('select').value=""
+    document.getElementById('demo').innerText=""
 }
