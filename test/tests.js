@@ -1,27 +1,31 @@
-const describe = require('describe');
+//const describe = require('describe');
 
- //const winner = require('../src/main');
- //import winner from '../src/main';
- const chai = require('chai')
- const expect = chai.expect
+ //import { winnerSelectY } from '../src/main'
+ //import main from '../src/main';
+//  import expect from 'chai'
+ const chai = window.chai
+const expect = chai.expect
 
+var x_Winner=parseInt(localStorage.getItem("scoreX"))
+var o_Winner=parseInt(localStorage.getItem("scoreO"))
+console.log(o_Winner)
 
-
-function winnerTest(a,b,c){
-    return a&&b&&c
-    
-
-}
-var result= winnerTest(true,true,true)
-
-//console.log(winner())
-
-describe('winner', () => {
-  it('player winner', () => {
-  //  const result=winnerTest(true,true,true)
-  //     assert.equal(winner,result)
-    expect(winner(true,true,true)).to.deep.equal(result)
+describe('winnerO', () => {
+  it('Check how many time "O"player winner', () => {
+   
+     
+        expect(o_Winner).to.deep.equal(parseInt(1))
+        //expect(o_Winner).to.deep.equal(parseInt(2))
+      
    
   })
 })
 
+describe('winnerX', () => {
+  it('Check how many time "X"player winner', () => {
+   
+        expect(x_Winner).to.deep.equal(parseInt(3))
+        //expect(x_Winner).to.deep.equal(parseInt(2))
+   
+  })
+})
