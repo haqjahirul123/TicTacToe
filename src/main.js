@@ -1,102 +1,82 @@
-//let document = (typeof document === "undefined") ? {} : document;
+class Game {
+    //sign="X"
+    // xScore=0
+    // yScore=0
+    // dScore=0
+    // playerOneScoreCard = document.getElementById('player-one-score');
+    // playerTwoScoreCard = document.getElementById('player-two-score');
+    // drawScoreCard = document.getElementById('draw-score');
 
-//var button= document.getElementById('resetBtn')
-//ar playerTurn= document.getElementById('playerTurn')
+    constructor(sign,xScore, yScore, playerOneScoreCard, playerTwoScoreCard, drawScoreCard) {
+        this.sign=sign
+        this.xScore=xScore
+        this.yScore=yScore
+        this.playerOneScoreCard=playerOneScoreCard
+        this.playerTwoScoreCard=playerTwoScoreCard
+        this.drawScoreCard=drawScoreCard
+     
+    }
+ 
 
+ fill(number){
 
-// function playerInput(val){
-//     //console.log(val)
-  
-//          sign2=val
-//         console.log(sign2)
-    
-//       if(val==undefined){
-//         document.getElementById("demo").innerText = "You selected: " + "";
-//       }
-
-//       else{
-//         document.getElementById("demo").innerText = "You selected: " + sign2;
-
-//       }  
-       
-// }
-// console.log(sign2)
-// console.log(playerInput())
-
-  
-var sign="X"
-var xScore=0
-var yScore=0
-var dScore=0
-var playerOneScoreCard = document.getElementById('player-one-score');
-var playerTwoScoreCard = document.getElementById('player-two-score');
-var drawScoreCard = document.getElementById('draw-score');
-
-   
-
-
-
-function fill(number){
-    let box=document.getElementById("div"+number)
+let box=document.getElementById("div"+number)
     console.log(box)
 
-    if(box.innerText==""){
-        box.innerHTML=sign
-        checkPlayer()
-        playerTurn.innerHTML="Now "+sign+" 's Turn"
+    if( box.innerText=="" && box.innerText!=null && box.innerText!=undefined){
+        box.innerHTML=this.sign
+        this.checkPlayer()
+        playerTurn.innerHTML="Now "+this.sign+" 's Turn"
     }
 
    
-    if(winnerSelectX()){
-       
-        // document.getElementById('result').innerHTML="X"+"  "+"Congrats!! YOU ARE WINNER"
-        // playerOneScoreCard.innerHTML = ++xScore;
+    if(this.winnerSelectX()){
 
-        document.getElementById('result').innerHTML="X"+"  "+"Congrats!! YOU ARE WINNER"   
-        localStorage.setItem("scoreX",++xScore)
-        playerOneScoreCard.innerHTML =localStorage.getItem("scoreX")      
-        
+         document.getElementById('result').innerHTML="X"+"  "+"Congrats!! YOU ARE WINNER"   
+        localStorage.setItem("scoreX",++this.xScore)
+        playerOneScoreCard.innerHTML =localStorage.getItem("scoreX")    
     }
     else{
-        if(winnerSelectY())
+        if(this.winnerSelectY())
         {
             document.getElementById('result').innerHTML="O"+"  "+"Congrats!! YOU ARE WINNER"
-            localStorage.setItem("scoreO", Number(++yScore))
+            localStorage.setItem("scoreO", Number(++this.yScore))
             playerTwoScoreCard.innerHTML = parseInt(localStorage.getItem("scoreO"));
            
         }
     }
 
     
-        if(draw()){
+        if(this.draw()){
            
             document.getElementById('result').innerHTML="It's DRAW. Try one more?"       
-            // localStorage.setItem("drawXO", Number(++dScore))
-            // drawScoreCard.innerHTML = localStorage.getItem("drawXO");
+            localStorage.setItem("drawXO", Number(++dScore))
+            this.drawScoreCard.innerHTML = localStorage.getItem("drawXO");
     }
+}
 
-    function checkPlayer(){
-        if(sign=="X"){
-            sign="O"
+     checkPlayer(){
+        if(this.sign=="X"){
+            this.sign="O"
         }
         else{
-            sign="X"
+            this.sign="X"
         }
     }   
     
-    function getData(div){
+     getData(div){
        
         return document.getElementById(div).innerHTML;
         
       
     }
     
-    function winnerSelectConX(a,b,c){
-        if (getData(a)=="X"
-        && getData(b)=="X"
-        && getData(c)=="X"
-        && (getData(a)==getData(b))
-        && (getData(b)==getData(c))
+     winnerSelectConX(a,b,c){
+        if (this.getData(a)=="X"
+        && this.getData(b)=="X"
+        && this.getData(c)=="X"
+        && (this.getData(a)==this.getData(b))
+        && (this.getData(b)==this.getData(c))
        
         )
         {
@@ -106,16 +86,16 @@ function fill(number){
     
     }
     
-    function winnerSelectX(){
+     winnerSelectX(){
         if(
-            winnerSelectConX("div1","div2","div3")||
-            winnerSelectConX("div2","div4","div5")||
-            winnerSelectConX("div7","div8","div9")||
-            winnerSelectConX("div1","div4","div7")||
-            winnerSelectConX("div2","div5","div8")||
-            winnerSelectConX("div3","div6","div9")||
-            winnerSelectConX("div1","div5","div9")||
-            winnerSelectConX("div3","div5","div7")                 
+            this.winnerSelectConX("div1","div2","div3")||
+            this.winnerSelectConX("div2","div4","div5")||
+            this.winnerSelectConX("div7","div8","div9")||
+            this.winnerSelectConX("div1","div4","div7")||
+            this.winnerSelectConX("div2","div5","div8")||
+            this.winnerSelectConX("div3","div6","div9")||
+            this.winnerSelectConX("div1","div5","div9")||
+            this.winnerSelectConX("div3","div5","div7")                 
         )
         {
             return true
@@ -123,12 +103,12 @@ function fill(number){
     }
     
     
-    function winnerSelectConY(a,b,c){
-        if (getData(a)=="O"
-        && getData(b)=="O"
-        && getData(c)=="O"
-        && (getData(a)==getData(b))
-        && (getData(b)==getData(c))
+     winnerSelectConY(a,b,c){
+        if (this.getData(a)=="O"
+        && this.getData(b)=="O"
+        && this.getData(c)=="O"
+        && (this.getData(a)==this.getData(b))
+        && (this.getData(b)==this.getData(c))
        )
         {
             return true
@@ -137,16 +117,16 @@ function fill(number){
     
       }
     
-      function winnerSelectY(){
+       winnerSelectY(){
         if(
-            winnerSelectConY("div1","div2","div3")||
-            winnerSelectConY("div2","div4","div5")||
-            winnerSelectConY("div7","div8","div9")||
-            winnerSelectConY("div1","div4","div7")||
-            winnerSelectConY("div2","div5","div8")||
-            winnerSelectConY("div3","div6","div9")||
-            winnerSelectConY("div1","div5","div9")||
-            winnerSelectConY("div3","div5","div7")                 
+            this.winnerSelectConY("div1","div2","div3")||
+            this.winnerSelectConY("div2","div4","div5")||
+            this.winnerSelectConY("div7","div8","div9")||
+            this.winnerSelectConY("div1","div4","div7")||
+            this.winnerSelectConY("div2","div5","div8")||
+            this.winnerSelectConY("div3","div6","div9")||
+            this.winnerSelectConY("div1","div5","div9")||
+            this.winnerSelectConY("div3","div5","div7")                 
         )
         {
             return true
@@ -157,39 +137,43 @@ function fill(number){
     
     
     
-    function draw(){
-        if (getData("div1")!=""
-        && getData("div2")!=""
-        && getData("div3")!=""
-        && getData("div4")!=""
-        && getData("div5")!=""
-        && getData("div6")!=""
-        && getData("div7")!=""
-        && getData("div8")!=""
+     draw(){
+        if (this.getData("div1")!=""
+        && this.getData("div2")!=""
+        && this.getData("div3")!=""
+        && this.getData("div4")!=""
+        && this.getData("div5")!=""
+        && this.getData("div6")!=""
+        && this.getData("div7")!=""
+        && this.getData("div8")!=""
+        && this.winnerSelectY()!=true
+        && this.winnerSelectX()!=true
         )
         return true
     }
     
 
-  }
+  
 
-  function reset(){
-    for(i=1;i<=9;i++){
+   reset(){
+    for(let i=1;i<=9;i++){
         document.getElementById('div'+i).innerText=""
     }
     document.getElementById('result').innerText=""
     
 
 }
-  //fill()
 
+}
 
+var game= new Game("X",
+                    xScore=0,
+                    yScore=0,
+                    dScore=0,
+                    playerOneScoreCard = document.getElementById('player-one-score'),
+                    playerTwoScoreCard = document.getElementById('player-two-score'),
+                    drawScoreCard = document.getElementById('draw-score'))
 
-
-
-
-
-//exports.modules= {winner}
 // module.exports = {
 //     winner
 //     };
