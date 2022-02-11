@@ -1,23 +1,25 @@
 class Game {
-    //sign="X"
-    // xScore=0
-    // yScore=0
-    // dScore=0
-    // playerOneScoreCard = document.getElementById('player-one-score');
-    // playerTwoScoreCard = document.getElementById('player-two-score');
-    // drawScoreCard = document.getElementById('draw-score');
+    sign="X"
+    xScore=0
+    yScore=0
+    dScore=0
+    
+     playerOneScoreCard =  document.getElementById('player-one-score')
+     playerTwoScoreCard =document.getElementById('player-two-score')
+     drawScoreCard = document.getElementById('draw-score')
 
-    constructor(sign,xScore, yScore, playerOneScoreCard, playerTwoScoreCard, drawScoreCard) {
+
+    constructor(sign,xScore, yScore, dScore) {
         this.sign=sign
         this.xScore=xScore
         this.yScore=yScore
-        this.playerOneScoreCard=playerOneScoreCard
-        this.playerTwoScoreCard=playerTwoScoreCard
-        this.drawScoreCard=drawScoreCard
-     
+        this.dScore=dScore
+        this.playerOneScoreCard.innerHTML = xScore;
+        this.playerTwoScoreCard.innerHTML = yScore;
+
+        
     }
  
-
  fill(number){
 
 let box=document.getElementById("div"+number)
@@ -33,16 +35,24 @@ let box=document.getElementById("div"+number)
     if(this.winnerSelectX()){
 
          document.getElementById('result').innerHTML="X"+"  "+"Congrats!! YOU ARE WINNER"   
-        localStorage.setItem("scoreX",++this.xScore)
-        playerOneScoreCard.innerHTML =localStorage.getItem("scoreX")    
+        //  if (localStorage !== null){ }
+            //window.localStorage.clear(
+            
+            var abc=++this.xScore
+            localStorage.setItem("scoreX", abc)
+            this.playerOneScoreCard.innerHTML =localStorage.getItem("scoreX")
+            //this.playerOneScoreCard.innerHTML =window.localStorage.getItem("scoreX")
+            
     }
     else{
         if(this.winnerSelectY())
         {
             document.getElementById('result').innerHTML="O"+"  "+"Congrats!! YOU ARE WINNER"
-            localStorage.setItem("scoreO", Number(++this.yScore))
-            playerTwoScoreCard.innerHTML = parseInt(localStorage.getItem("scoreO"));
-           
+          
+            //playerTwoScoreCard.innerHTML=""
+            window.localStorage.setItem("scoreO", JSON.stringify(++this.yScore))
+            this.playerTwoScoreCard.innerHTML = window.localStorage.getItem("scoreO");
+        
         }
     }
 
@@ -50,8 +60,8 @@ let box=document.getElementById("div"+number)
         if(this.draw()){
            
             document.getElementById('result').innerHTML="It's DRAW. Try one more?"       
-            localStorage.setItem("drawXO", Number(++dScore))
-            this.drawScoreCard.innerHTML = localStorage.getItem("drawXO");
+            window.localStorage.setItem("drawXO", JSON.stringify(++this.dScore))
+            this.drawScoreCard.innerHTML = window.localStorage.getItem("drawXO");
     }
 }
 
@@ -114,6 +124,7 @@ let box=document.getElementById("div"+number)
             return true
            
         }  
+       
     
       }
     
@@ -166,17 +177,13 @@ let box=document.getElementById("div"+number)
 
 }
 
-var game= new Game("X",
-                    xScore=0,
-                    yScore=0,
-                    dScore=0,
-                    playerOneScoreCard = document.getElementById('player-one-score'),
-                    playerTwoScoreCard = document.getElementById('player-two-score'),
-                    drawScoreCard = document.getElementById('draw-score'))
+var previousScoreX = window.localStorage.hasOwnProperty("scoreX")?localStorage.getItem("scoreX") : 0;
+var previousScoreO = window.localStorage.hasOwnProperty("scoreO")?localStorage.getItem("scoreO") : 0;
 
-// module.exports = {
-//     winner
-//     };
+
+var game= new Game("X",previousScoreX,previousScoreO,0);
+
+
 
 
 
