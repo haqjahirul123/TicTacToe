@@ -1,4 +1,4 @@
-class Game {
+export class Game {
     sign=""
     xScore=0
     yScore=0
@@ -7,10 +7,6 @@ class Game {
      playerOneScoreCard =  document.getElementById('player-one-score')
      playerTwoScoreCard =document.getElementById('player-two-score')
      drawScoreCard = document.getElementById('draw-score')
-
-    winningMessageElement = document.getElementById('winningMessage')
-    restartButton = document.getElementById('restartButton')
-    
 
 
     constructor(sign,xScore, yScore, dScore) {
@@ -29,7 +25,10 @@ class Game {
  
     var box=document.getElementById("div"+number)
 
-     if( box.innerText=="" && box.innerText!=null && box.innerText!=undefined){
+    //this.gameOver(box)
+    //console.log(box)
+
+    if( box.innerText=="" && box.innerText!=null && box.innerText!=undefined){
         box.innerHTML=this.sign
         this.checkPlayer()
         playerTurn.innerHTML="Now "+this.sign+" 's Turn"
@@ -47,10 +46,10 @@ class Game {
             localStorage.setItem("scoreX", abc)
             this.playerOneScoreCard.innerHTML =localStorage.getItem("scoreX")
             //this.playerOneScoreCard.innerHTML =window.localStorage.getItem("scoreX")
-             //document.getElementById('container').disabled=true
-             // document.getElementById('data-winning-message-text').innerHTML = 'Draw!'
-             this.clearCell()
-            }
+            //getData().disabled()
+            gameOver()
+            
+    }
     else{
         if(this.winnerSelectY())
         {
@@ -59,7 +58,7 @@ class Game {
             //playerTwoScoreCard.innerHTML=""
             window.localStorage.setItem("scoreO", JSON.stringify(++this.yScore))
             this.playerTwoScoreCard.innerHTML = window.localStorage.getItem("scoreO");
-            this.clearCell()
+        
         }
     }
 
@@ -71,9 +70,20 @@ class Game {
             this.drawScoreCard.innerHTML = window.localStorage.getItem("drawXO");
         }
 
+ 
+      
+      
+
+ 
     
 }
 
+gameOver(){
+    for(let i=1;i<=9;i++){
+        document.getElementById('div'+i).ariaDisabled
+    }
+}
+ 
 
 
      checkPlayer(){
@@ -87,6 +97,7 @@ class Game {
     
      getData(div){
        
+     
         return document.getElementById(div).innerHTML;  
       
     }
@@ -185,15 +196,9 @@ class Game {
     for(let i=1;i<=9;i++){
         document.getElementById('div'+i).innerText=""
     }
-    document.getElementById('result').innerText="" 
+    document.getElementById('result').innerText=""
+    
 
-}
-
-clearCell(){
-    for(let i=1;i<=9;i++){
-        document.getElementById('div'+i).innerText=""
-    }
-   
 }
 
 
