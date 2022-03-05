@@ -1,34 +1,27 @@
-export class Game {
+ export class Game {
     sign=""
     xScore=0
     yScore=0
     dScore=0
-    
-     playerOneScoreCard =  document.getElementById('player-one-score')
-     playerTwoScoreCard =document.getElementById('player-two-score')
-     drawScoreCard = document.getElementById('draw-score')
 
-
-    constructor(sign,xScore, yScore, dScore) {
+    constructor(sign,xScore, yScore, dScore,playerOneScoreCard, playerTwoScoreCard, drawScoreCard) {
         this.sign=sign
         this.xScore=xScore
         this.yScore=yScore
         this.dScore=dScore
+        this.playerOneScoreCard=playerOneScoreCard
+        this.playerTwoScoreCard=playerTwoScoreCard
+        this.drawScoreCard=drawScoreCard
         this.playerOneScoreCard.innerHTML = xScore;
         this.playerTwoScoreCard.innerHTML = yScore;
-
         
     }
  
  fill(number){
 
- 
     var box=document.getElementById("div"+number)
 
-    //this.gameOver(box)
-    //console.log(box)
-
-    if( box.innerText=="" && box.innerText!=null && box.innerText!=undefined){
+     if( box.innerText=="" && box.innerText!=null && box.innerText!=undefined){
         box.innerHTML=this.sign
         this.checkPlayer()
         playerTurn.innerHTML="Now "+this.sign+" 's Turn"
@@ -39,26 +32,19 @@ export class Game {
 
        
          document.getElementById('result').innerHTML="X"+"  "+"Congrats!! YOU ARE WINNER"   
-        //  if (localStorage !== null){ }
-            //window.localStorage.clear(
             
             var abc=++this.xScore
             localStorage.setItem("scoreX", abc)
             this.playerOneScoreCard.innerHTML =localStorage.getItem("scoreX")
-            //this.playerOneScoreCard.innerHTML =window.localStorage.getItem("scoreX")
-            //getData().disabled()
-            gameOver()
-            
-    }
+             this.clearCell()
+            }
     else{
         if(this.winnerSelectY())
         {
             document.getElementById('result').innerHTML="O"+"  "+"Congrats!! YOU ARE WINNER"
-          
-            //playerTwoScoreCard.innerHTML=""
             window.localStorage.setItem("scoreO", JSON.stringify(++this.yScore))
             this.playerTwoScoreCard.innerHTML = window.localStorage.getItem("scoreO");
-        
+            this.clearCell()
         }
     }
 
@@ -68,23 +54,11 @@ export class Game {
             document.getElementById('result').innerHTML="It's DRAW. Try one more?"       
             window.localStorage.setItem("drawXO", JSON.stringify(++this.dScore))
             this.drawScoreCard.innerHTML = window.localStorage.getItem("drawXO");
+            this.clearCell()
         }
 
- 
-      
-      
-
- 
     
 }
-
-gameOver(){
-    for(let i=1;i<=9;i++){
-        document.getElementById('div'+i).ariaDisabled
-    }
-}
- 
-
 
      checkPlayer(){
         if(this.sign=="X"){
@@ -97,7 +71,6 @@ gameOver(){
     
      getData(div){
        
-     
         return document.getElementById(div).innerHTML;  
       
     }
@@ -162,17 +135,10 @@ gameOver(){
             this.winnerSelectConY("div1","div5","div9")||
             this.winnerSelectConY("div3","div5","div7")                 
         )
-        {
-            
+        { 
             return true
-        }
-     
-        
-       
-       
+        }  
     }
-    
-    
     
      draw(){
         if (this.getData("div1")!=""
@@ -189,29 +155,22 @@ gameOver(){
         return true
     }
     
+    reset(){
+        for(let i=1;i<=9;i++){
+            document.getElementById('div'+i).innerText=""
+        }
+        document.getElementById('result').innerText="" 
 
-  
-
-   reset(){
-    for(let i=1;i<=9;i++){
-        document.getElementById('div'+i).innerText=""
     }
-    document.getElementById('result').innerText=""
+
+    clearCell(){
+        for(let i=1;i<=9;i++){
+            document.getElementById('div'+i).innerText=""
+        }
     
+    }
 
 }
-
-
-
-
-
-}
-
-var previousScoreX = window.localStorage.hasOwnProperty("scoreX")?localStorage.getItem("scoreX") : 0;
-var previousScoreO = window.localStorage.hasOwnProperty("scoreO")?localStorage.getItem("scoreO") : 0;
-
-
-var game= new Game("X",previousScoreX,previousScoreO,0);
 
 
 

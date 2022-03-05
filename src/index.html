@@ -50,16 +50,16 @@
     <div id="playerTurn" class="playerTurn"></div>
     <div id="container" class="container ">
         
-            <div id="div1" onClick="game.fill(1)"class="div"></div>
-            <div id="div2" onClick="game.fill(2)"class="div"></div>
-            <div id="div3" onClick="game.fill(3)"class="div"></div>
-            <div id="div4" onClick="game.fill(4)"class="div"></div>
-            <div id="div5" onClick="game.fill(5)"class="div"></div>
-            <div id="div6" onClick="game.fill(6)"class="div"></div>
-            <div id="div7" onClick="game.fill(7)"class="div"></div>
-            <div id="div8" onClick="game.fill(8)"class="div"></div>
-            <div id="div9" onClick="game.fill(9)"class="div"></div>
-            <button type="button"onclick="game.reset()" id="">Reset Game?</button>
+            <div id="div1" onclick="func(1)" class="div"></div>
+            <div id="div2" onclick="func(2)" class="div"></div>
+            <div id="div3" onclick="func(3)"class="div"></div>
+            <div id="div4" onclick="func(4)"class="div"></div>
+            <div id="div5" onclick="func(5)"class="div"></div>
+            <div id="div6" onclick="func(6)"class="div"></div>
+            <div id="div7" onclick="func(7)"class="div"></div>
+            <div id="div8" onclick="func(8)"class="div"></div>
+            <div id="div9" onclick="func(9)"class="div"></div>
+            <button type="button"onclick="reset()" id="">Reset Game?</button>
         
     </div>
 
@@ -71,13 +71,14 @@
         // skapar de globala metoderna 'describe' och 'it'
         mocha.setup("bdd");
     </script>
-    <script type="module" src="../test/tests.js"></script>
+    <!-- <script type="module" src="../test/tests.js"></script> -->
     <script type="module">
         // slår på att det ska varnas om globala variabler skapas
         mocha.checkLeaks();
         // kör testerna
         mocha.run();
     </script>
-   <script src="./main.js"></script>
+   <script type="module"  src="./main.js"></script>
+   <!-- <script type="module"  src="./game.js"></script> -->
    </body>
 </html>
