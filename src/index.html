@@ -6,33 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link  rel="stylesheet" href="style.css">
-
-    <head>
-        <!-- add mocha css, to show results -->
-        <link rel="stylesheet" href="../node_modules/mocha/mocha.css">
-        <!-- add mocha framework code -->
-        <script src="../node_modules/mocha/mocha.js"></script>
-        <script>
-            mocha.setup('bdd'); // minimal setup
-        </script>
-        <!-- add chai -->
-        <script src="../node_modules/chai/chai.js"></script>
-    </head>
     
-  
 </head>
 <body>
     <h2> Play TIc Tac Toe with Jahirul</h2>
-    <!-- <label id="player"> PLAYER 1:<span>  </span>Jahir </label> <br>
-    <label id="player"> PLAYER 2:<input type="text" 
-                                        id="select" 
-                                        name="txt" 
-                                        value="" 
-                                        onfocus="this.value=''"
-                                        onchange="playerInput(value)"
-                                        >
-    </label> -->
-    <!-- <p id="demo"></p> -->
     <div  >
         <div> Game Message: </div>
         <div id="result" class="result"></div>
@@ -48,37 +25,19 @@
 
 
     <div id="playerTurn" class="playerTurn"></div>
-    <div id="container" class="container ">
-        
-            <div id="div1" onclick="func(1)" class="div"></div>
-            <div id="div2" onclick="func(2)" class="div"></div>
-            <div id="div3" onclick="func(3)"class="div"></div>
-            <div id="div4" onclick="func(4)"class="div"></div>
-            <div id="div5" onclick="func(5)"class="div"></div>
-            <div id="div6" onclick="func(6)"class="div"></div>
-            <div id="div7" onclick="func(7)"class="div"></div>
-            <div id="div8" onclick="func(8)"class="div"></div>
-            <div id="div9" onclick="func(9)"class="div"></div>
-            <button type="button"onclick="reset()" id="">Reset Game?</button>
-        
+    <div id="container" class="container ">    
+                <div id="div1" onclick="func(1)" class="div"></div>
+                <div id="div2" onclick="func(2)" class="div"></div>
+                <div id="div3" onclick="func(3)"class="div"></div>
+                <div id="div4" onclick="func(4)"class="div"></div>
+                <div id="div5" onclick="func(5)"class="div"></div>
+                <div id="div6" onclick="func(6)"class="div"></div>
+                <div id="div7" onclick="func(7)"class="div"></div>
+                <div id="div8" onclick="func(8)"class="div"></div>
+                <div id="div9" onclick="func(9)"class="div"></div>
+                <button type="button"onclick="reset()" id="">Reset Game?</button>   
     </div>
 
-    
-    <!-- <script  type="module"  src="./main.js"> </script> -->
-    <div id="mocha"></div>
-
-    <script type="module">
-        // skapar de globala metoderna 'describe' och 'it'
-        mocha.setup("bdd");
-    </script>
-    <!-- <script type="module" src="../test/tests.js"></script> -->
-    <script type="module">
-        // slår på att det ska varnas om globala variabler skapas
-        mocha.checkLeaks();
-        // kör testerna
-        mocha.run();
-    </script>
    <script type="module"  src="./main.js"></script>
-   <!-- <script type="module"  src="./game.js"></script> -->
    </body>
 </html>
