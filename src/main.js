@@ -2,22 +2,25 @@ import {Game} from "./game.js"
 
 var previousScoreX = window.localStorage.hasOwnProperty("scoreX")?localStorage.getItem("scoreX") : 0;
 var previousScoreO = window.localStorage.hasOwnProperty("scoreO")?localStorage.getItem("scoreO") : 0;
+var drawScore=window.localStorage.hasOwnProperty('drawXO')?localStorage.getItem('drawXO'):0
    
 var playerOneScoreCard =  document.getElementById('player-one-score')
 var playerTwoScoreCard =document.getElementById('player-two-score')
 var drawScoreCard = document.getElementById('draw-score')
 
     
- var game=new Game("X",previousScoreX,previousScoreO,0,playerOneScoreCard,  playerTwoScoreCard,drawScoreCard);
+var game=new Game("X",previousScoreX,previousScoreO,drawScore,playerOneScoreCard,  playerTwoScoreCard,drawScoreCard);
  
-var number 
+var num1 
 window.func=function(num){
-          number=num
-          game.fill(number)
+          num1=num
+          game.fill(num1)
 }
 
-window.reset=function(){
-     game.reset()
+var max
+window.reset=function(num){
+     max=num
+     game.reset(max)
 }
 
 

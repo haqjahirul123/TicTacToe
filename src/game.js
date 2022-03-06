@@ -1,8 +1,8 @@
  export class Game {
-    sign=""
-    xScore=0
-    yScore=0
-    dScore=0
+    //sign=""
+    // xScore=0
+    // yScore=0
+    // dScore=0
 
     constructor(sign,xScore, yScore, dScore,playerOneScoreCard, playerTwoScoreCard, drawScoreCard) {
         this.sign=sign
@@ -12,8 +12,9 @@
         this.playerOneScoreCard=playerOneScoreCard
         this.playerTwoScoreCard=playerTwoScoreCard
         this.drawScoreCard=drawScoreCard
-        this.playerOneScoreCard.innerHTML = xScore;
-        this.playerTwoScoreCard.innerHTML = yScore;
+        this.playerOneScoreCard.innerHTML = xScore
+        this.playerTwoScoreCard.innerHTML = yScore
+        this.drawScoreCard.innerHTML=dScore
         
     }
  
@@ -155,13 +156,14 @@
         return true
     }
     
-    reset(){
-        for(let i=1;i<=9;i++){
+    reset(max){
+        for(let i=1;i<=max;i++){
             document.getElementById('div'+i).innerText=""
         }
         document.getElementById('result').innerText="" 
-
+        
     }
+  
 
     clearCell(){
         for(let i=1;i<=9;i++){

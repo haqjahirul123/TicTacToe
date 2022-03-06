@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link  rel="stylesheet" href="">
+
+        <!-- add mocha css, to show results -->
+        <link rel="stylesheet" href="../node_modules/mocha/mocha.css">
+        <!-- add mocha framework code -->
+        <script src="../node_modules/mocha/mocha.js"></script>
+        <script>
+            mocha.setup('bdd'); // minimal setup
+        </script>
+        <!-- add chai -->
+        <script src="../node_modules/chai/chai.js"></script>
+</head>
+<body>
+   <div  >
+        <h2>Test Result</h2>
+        <hr> 
+    </div>
+    <hr>
+    
+    <!-- <script  type="module"  src="./main.js"> </script> -->
+    <div id="mocha"></div>
+
+    <script type="module">
+        // skapar de globala metoderna 'describe' och 'it'
+        mocha.setup("bdd");
+    </script>
+    <!-- <script type="module" src="../test/tests.js"></script> -->
+    <script type="module">
+        // slår på att det ska varnas om globala variabler skapas
+        mocha.checkLeaks();
+        // kör testerna
+        mocha.run();
+    </script>
+   <script type="module"  src="./test/tests.js"></script>
+   <script type="module"  src="../src/game.js"></script>
+   <!-- <script type="module"  src="./game.js"></script> -->
+   </body>
+</html>
