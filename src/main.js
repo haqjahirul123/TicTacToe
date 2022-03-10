@@ -1,16 +1,7 @@
 import { Game } from "./game.js";
-import "./dataStroage.js";
 const core = new Game("x", "circle");
 
 
-
-//LOCALSTORAGE
-if (localStorage.getItem("playerOneScore") !== null) {
-  core.scoreOne = localStorage.getObject("playerOneScore");
-}
-if (localStorage.getItem("playerTwoScore") !== null) {
-  core.scoreTwo = localStorage.getObject("playerTwoScore");
-}
 //Button Elements
 const newGame_btn = document.getElementById("newGame_btn");
 const restart_btn = document.getElementById("restart_btn");
@@ -165,7 +156,31 @@ function endGame(draw) {
   winningMessageElement.classList.add("show");
 }
 
-// Reloads current html document.
+//LOCALSTORAGE
+Storage.prototype.getObject = function (key) {
+  return JSON.parse(this.getItem(key));
+};
+
+Storage.prototype.copyContent = function () {
+  const keyValuePairs = Object.entries(this);
+  this.clear();
+  return keyValuePairs;
+};
+
+Storage.prototype.restoreContent = function (content) {
+  this.clear();
+  for (let [key, value] of content) {
+    this.setItem(key, value);
+  }
+};
+if (localStorage.getItem("playerOneScore") !== null) {
+  core.scoreOne = localStorage.getObject("playerOneScore");
+}
+if (localStorage.getItem("playerTwoScore") !== null) {
+  core.scoreTwo = localStorage.getObject("playerTwoScore");
+}
+
+// load html page.
 function restartGame() {
   localStorage.clear();
   return location.reload(true);
