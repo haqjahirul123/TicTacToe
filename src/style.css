@@ -74,6 +74,19 @@ h3 {
   color:rgb(247, 231, 12);
   font-size: 2rem;
   margin-top: -10rem;
+ 
+}
+
+span{
+  margin-left: 15px;
+}
+
+.playerOneScore{
+  color:rgb(74, 91, 243) !important;
+}
+
+.playerTwoScore{
+  color: rgb(74, 91, 243) !important;
 }
 
 .information {

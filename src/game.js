@@ -8,7 +8,7 @@ export class Game {
       this.playerTurn;
       this.currentPlayer;
   
-  
+      //winning conditions array
       this.win = [
         [0, 1, 2],
         [3, 4, 5],
@@ -21,7 +21,7 @@ export class Game {
       ];
     }
   
-    
+    // Player turns selection
     getNextPlayer() {
       this.playerTurn = !this.playerTurn;
       this.currentPlayer = this.playerTurn ? this.playerOne : this.playerTwo;
@@ -29,7 +29,7 @@ export class Game {
       return this.currentPlayer;
     }
   
-    
+    //Update Game score in Localstroage
     updateScore(currentPlayer) {
       if (currentPlayer == this.playerOne) {
         this.scoreOne++;
@@ -42,7 +42,7 @@ export class Game {
       }
     }
   
-  
+  // Winning Logic check
     checkWin(playerCells) {
       for (let combination of this.win) {
         let sum = 0;
@@ -58,7 +58,7 @@ export class Game {
       return false;
     }
   
-  
+      // draw Logic check if every cell is null
     isDraw(playerCells) {
       if (playerCells.includes(null)) {
         return false;
