@@ -9,24 +9,32 @@ const chai = window.chai
 // var playerOneScoreCard =  document.getElementById('player-one-score')
 // var playerTwoScoreCard =document.getElementById('player-two-score')
 // var drawScoreCard = document.getElementById('draw-score')
-
     
 //  var game=new Game("X",previousScoreX,previousScoreO,0,playerOneScoreCard,  playerTwoScoreCard,drawScoreCard);
 
- var game=new Game()
+//game.reset()
+var game=new Game()
+var boolResult=game.winnerSelectConX("div1","div2","div3")
 
-//ame.reset()
-
- function refresh(){
+ function winCheck(a,b,c){
   // var b=a
-  game.winnerSelectConX("div1","div2","div3")
- 
+  if(!undefined && !null){
+    if((a==b) && (b==c) && (c=a)){
+      return true
+  
+    }
+    
+
+  }
 
 }
 
+console.log(winCheck("X","X","X"))
+
 describe('reset value', () => {
   it(' Check refresh all field', () => {
-        expect(refresh()).to.deep.equal(true)
+        // expect(winCheck("div1","div2","div3")).to.deep.equal(true)
+        expect(winCheck()).to.deep.equal(boolResult)
         //expect( Ovalue()!=NaN).to.deep.equal(false)
         //expect(o_Winner).to.deep.equal(parseInt(2))
       
