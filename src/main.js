@@ -43,13 +43,7 @@ const playerMessage = document.querySelector(".player_Message");
 //Button event listeners
 newGame_btn.addEventListener("click", startGame);
 restart_btn.addEventListener("click", restartGame);
-// bot_btn.addEventListener("click", botBtnClicked, { once: true });
 
-//Adds clicked class to button element
-function botBtnClicked() {
-  bot_btn.classList.add("bot");
-  bot_btn.style.backgroundColor = "green";
-}
 startGame();
 //Initializing the game and also clears the board from previous game data.
 function startGame() {
@@ -162,19 +156,19 @@ function restartGame() {
 }
 
 // Main BOT function, checks for empty cell and places mark at random.
-function botPlayer(currentPlayer) {
-  let cells = Array.from(cellElements);
-  let fullCells = [];
-  let emptyCells = [];
+// function botPlayer(currentPlayer) {
+//   let cells = Array.from(cellElements);
+//   let fullCells = [];
+//   let emptyCells = [];
 
-  for (let i = 0; i < cells.length; i++) {
-    if (cells[i].className == "cell x" || cells[i].className == "cell circle") {
-      fullCells.push(i);
-    } else {
-      emptyCells.push(i);
-    }
-  }
+//   for (let i = 0; i < cells.length; i++) {
+//     if (cells[i].className == "cell x" || cells[i].className == "cell circle") {
+//       fullCells.push(i);
+//     } else {
+//       emptyCells.push(i);
+//     }
+//   }
 
-  let botTurn = emptyCells[Math.floor(Math.random() * emptyCells.length)];
-  placeMark(cells[botTurn], currentPlayer);
-}
+//   let botTurn = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+//   placeMark(cells[botTurn], currentPlayer);
+// }
