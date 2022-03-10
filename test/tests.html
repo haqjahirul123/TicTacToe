@@ -16,6 +16,10 @@
         </script>
         <!-- add chai -->
         <script src="../node_modules/chai/chai.js"></script>
+        <script>
+            // chai has a lot of stuff, let's make assert global
+            let assert = chai.assert;
+          </script>
 </head>
 <body>
    <div  >
@@ -38,7 +42,7 @@
         // kör testerna
         mocha.run();
     </script>
-   <script type="module"  src="./test/tests.js"></script>
+   <script type="module"  src="./tests.js"></script>
    <!-- <script type="module"  src="../src/game.js"></script> -->
    <!-- <script type="module"  src="./game.js"></script> -->
    </body>
