@@ -9,7 +9,6 @@ export class Game {
       this.currentPlayer;
   
   
-  
       this.win = [
         [0, 1, 2],
         [3, 4, 5],

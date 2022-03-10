@@ -187,7 +187,7 @@ h3 {
   gap: 10px;
   justify-content: center;
   align-items: center;
-  color: rgb(250, 245, 215);
+  color: rgb(247, 231, 12);
   font-size: 4rem;
   font-weight: 500;
   font-family: monospace;
@@ -195,7 +195,7 @@ h3 {
 
 .winning_message button {
   font-family: monospace;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 700;
 
   border: 3px solid rgb(247, 231, 12);;
@@ -290,12 +290,6 @@ h3 {
 }
 
 
-
-.result{
-   
-    color: #fffc00 ; 
-
-}
 
 
 

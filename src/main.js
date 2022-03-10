@@ -2,6 +2,30 @@ import { Game } from "./game.js";
 const core = new Game("x", "circle");
 
 
+// Store data at LOCALSTORAGE
+Storage.prototype.getObject = function (key) {
+  return JSON.parse(this.getItem(key));
+};
+
+Storage.prototype.copyContent = function () {
+  const keyValuePairs = Object.entries(this);
+  this.clear();
+  return keyValuePairs;
+};
+
+Storage.prototype.restoreContent = function (content) {
+  this.clear();
+  for (let [key, value] of content) {
+    this.setItem(key, value);
+  }
+};
+if (localStorage.getItem("playerOneScore") !== null) {
+  core.scoreOne = localStorage.getObject("playerOneScore");
+}
+if (localStorage.getItem("playerTwoScore") !== null) {
+  core.scoreTwo = localStorage.getObject("playerTwoScore");
+}
+
 //Button Elements
 const newGame_btn = document.getElementById("newGame_btn");
 const restart_btn = document.getElementById("restart_btn");
@@ -19,7 +43,7 @@ const playerMessage = document.querySelector(".player_Message");
 //Button event listeners
 newGame_btn.addEventListener("click", startGame);
 restart_btn.addEventListener("click", restartGame);
-bot_btn.addEventListener("click", botBtnClicked, { once: true });
+// bot_btn.addEventListener("click", botBtnClicked, { once: true });
 
 //Adds clicked class to button element
 function botBtnClicked() {
@@ -61,30 +85,6 @@ function handleClick(event) {
   } else {
     core.getNextPlayer();
     updateMessage(core.currentPlayer);
-
-    if (bot_btn.className === "bot_btn bot") {
-      cellElements.forEach((cell) => {
-        cell.removeEventListener("click", handleClick);
-      });
-
-      setTimeout(function () {
-        botPlayer(core.currentPlayer);
-        if (core.checkWin(getPlayerCellElement())) {
-          updateScoreElement(core.currentPlayer);
-          endGame(false);
-        } else if (core.isDraw(getPlayerCellElement())) {
-          endGame(true);
-        } else {
-          core.getNextPlayer();
-          cellElements.forEach((cell) => {
-            cell.addEventListener("click", handleClick);
-          });
-        }
-        boardHoverClass();
-        updateMessage(core.currentPlayer);
-      }, 1000);
-    }
-
     boardHoverClass();
   }
 }
@@ -98,7 +98,7 @@ function updateScoreElement(currentPlayer) {
   }
 }
 
-//Initializing which player got the first move/starts.
+//Initializing which player got the first starts.
 function startMessage(playerTurn) {
   if (playerTurn === true) {
     playerMessage.textContent = "X Start";
@@ -108,7 +108,6 @@ function startMessage(playerTurn) {
 }
 
 // Uppdates 'startMessage()' to show whos turn it is next
-// based on currentPlayer variable.
 function updateMessage(currentPlayer) {
   if (currentPlayer == core.playerOne) {
     playerMessage.textContent = "X's Turn";
@@ -156,31 +155,7 @@ function endGame(draw) {
   winningMessageElement.classList.add("show");
 }
 
-//LOCALSTORAGE
-Storage.prototype.getObject = function (key) {
-  return JSON.parse(this.getItem(key));
-};
-
-Storage.prototype.copyContent = function () {
-  const keyValuePairs = Object.entries(this);
-  this.clear();
-  return keyValuePairs;
-};
-
-Storage.prototype.restoreContent = function (content) {
-  this.clear();
-  for (let [key, value] of content) {
-    this.setItem(key, value);
-  }
-};
-if (localStorage.getItem("playerOneScore") !== null) {
-  core.scoreOne = localStorage.getObject("playerOneScore");
-}
-if (localStorage.getItem("playerTwoScore") !== null) {
-  core.scoreTwo = localStorage.getObject("playerTwoScore");
-}
-
-// load html page.
+// Reloads current html document.
 function restartGame() {
   localStorage.clear();
   return location.reload(true);
