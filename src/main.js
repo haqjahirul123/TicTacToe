@@ -112,7 +112,7 @@ function startMessage(playerTurn) {
   if (playerTurn === true) {
     playerMessage.textContent = "X Start";
   } else {
-    playerMessage.textContent = "Circle Start";
+    playerMessage.textContent = "O Start";
   }
 }
 
@@ -122,7 +122,7 @@ function updateMessage(currentPlayer) {
   if (currentPlayer == core.playerOne) {
     playerMessage.textContent = "X's Turn";
   } else {
-    playerMessage.textContent = "Circle's Turn";
+    playerMessage.textContent = "O's Turn";
   }
 }
 

@@ -31,10 +31,7 @@ button{
     margin-top: 10rem;
     justify-content: center;
     display: flex;
-    flex-direction: column;
-   
-   
-      
+    flex-direction: column;     
 }
 
 
@@ -45,29 +42,18 @@ button{
 }
 
 
-.game_container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-h1 {
-  font-family: monospace;
+h1 { 
   font-size: 4rem;
   margin: 0;
 }
 
 h2 {
-  font-family: monospace;
-  font-size: 5rem;
+  font-size: 3rem;
   margin: 0;
 }
 
 h3 {
-  font-family: monospace;
-  font-size: 4rem;
+  font-size: 2rem;
   margin: 0;
 }
 
@@ -87,14 +73,16 @@ h3 {
   padding-bottom: 40px;
   color:rgb(247, 231, 12);
   font-size: 2rem;
+  margin-top: -10rem;
 }
 
 .information {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100px;
-  padding-top: 40px;
+  height: 30px;
+  padding-top: 10px;
+
 }
 
 /* !BOARD */
@@ -105,6 +93,7 @@ h3 {
   justify-items: center;
   align-items: center;
   grid-template-columns: repeat(3, auto);
+  margin-top: 2rem;
 }
 
 .cell.x::before,
@@ -215,7 +204,7 @@ h3 {
   padding: 0.15em 0.5em;
 }
 
-BUTTONS
+
 .winning_message button:hover {
   cursor: pointer;
   color: white;
@@ -223,11 +212,12 @@ BUTTONS
 }
 
 .buttons {
-  padding-top: 40px;
+ 
   display: flex;
   gap: 10px;
   justify-content: center;
   align-items: center;
+  margin-top: -7rem;
 }
 .restart_btn {
   cursor: pointer;
@@ -251,19 +241,20 @@ BUTTONS
 }
 
 .bot_btn {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: monospace;
-  font-size: 2rem;
-  font-weight: 700;
-  width: 180px;
-
-  border: 2px solid black;
-  background-color: whitesmoke;
-  color: black;
-  padding: 0.15em 0.5em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18rem;
+    height: 3rem;
+    font-family: monospace;
+    font-size: 2rem;
+    font-weight: 700;
+    border: 3px solid rgb(247, 231, 12);;
+    background-color: white;
+    color:rgb(247, 231, 12);
+    padding: 0.15em 0.5em;
+    margin-top: 28rem;
 }
 
 .bot_btn:hover {
