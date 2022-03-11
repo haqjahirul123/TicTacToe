@@ -7,14 +7,26 @@ import { Game } from "../src/game.js"
  describe("Test game class", function () {
   const input1 = new Game("x", "circle");
   
- describe("Check if player won or not", function () {
+ describe("Check if player won or not and match draw or not", function () {
   const input2= new Game("x", "circle");
   input2.currentPlayer = input1.playerOne;
 
-    it("Winning combination - test", function () {
+    it("Winning combination1 - test", function () {
       const winningCombination = ["x","x","x",null,"circle",null,"circle",null,null,];
       assert.isTrue(input2.checkWin(winningCombination));
     });
+
+    it("Winning combination2 - test", function () {
+      const winningCombination = [null,null,"circle","x","x","x","circle",null,null,];
+      assert.isTrue(input2.checkWin(winningCombination));
+    });
+
+    it("Winning combination3 - test", function () {
+      const winningCombination = [null,"circle",null,"circle",null,null,"x","x","x"];
+      assert.isTrue(input2.checkWin(winningCombination));
+    });
+
+
 
     it("Not winning combination - test", function () {
       const notwinning = ["x",null,"x",null,"circle",null,"circle",null,"x",];
